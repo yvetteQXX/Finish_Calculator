@@ -1,0 +1,6 @@
+Debug/
+GeneratedFiles/
+Resources/
+*.vcxproj
+*.vcxproj.filters
+*.user
