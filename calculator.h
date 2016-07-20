@@ -35,8 +35,8 @@ private slots:
 	void button_divide_clicked();
 	void button_point_clicked();
 	void button_unknown_clicked();
-	void button_dele_clicked();
 	void button_newcalcu_clicked();
+	//void button_dele_clicked();
 
  signals:
 	void findClicked();

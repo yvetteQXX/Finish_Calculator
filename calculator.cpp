@@ -34,8 +34,29 @@ Calculator::Calculator(QWidget *parent)
 	divide = new QPushButton(tr("/"));
 	getanswer = new QPushButton(tr("="));
 	point = new QPushButton(tr("."));
-	dele = new QPushButton(tr("dele"));
+	dele = new QPushButton(tr("AC"));
 	unknown = new QPushButton(tr("+/-"));
+
+	lineEditor->setFixedSize(170,30);
+	one->setFixedSize(35, 35);
+	two->setFixedSize(35, 35);
+	three->setFixedSize(35, 35);
+	four->setFixedSize(35, 35);
+	five->setFixedSize(35, 35);
+	six->setFixedSize(35, 35);
+	seven->setFixedSize(35, 35);
+	eight->setFixedSize(35, 35);
+	nine->setFixedSize(35, 35);
+	zero->setFixedSize(35, 35);
+	newcalcu->setFixedSize(35, 35);
+	add->setFixedSize(35, 35);
+	minus->setFixedSize(35, 35);
+	multiplay->setFixedSize(35, 35);
+	divide->setFixedSize(35, 35);
+	getanswer->setFixedSize(80, 35);
+	point->setFixedSize(35, 35);
+	dele->setFixedSize(35, 35);
+	unknown->setFixedSize(35, 35);
 
 	connect(one, SIGNAL(clicked()), this,SLOT(button_one_clicked()));
 	connect(two, SIGNAL(clicked()), this, SLOT(button_two_clicked()));
@@ -53,17 +74,17 @@ Calculator::Calculator(QWidget *parent)
 	connect(multiplay, SIGNAL(clicked()), this, SLOT(button_multiplay_clicked()));
 	connect(divide, SIGNAL(clicked()), this, SLOT(button_divide_clicked()));
 	connect(getanswer, SIGNAL(clicked()), this, SLOT(button_getanswer_clicked()));
-	connect(dele, SIGNAL(clicked()), this, SLOT(button_dele_clicked()));
+	connect(dele, SIGNAL(clicked()), this, SLOT(close()));
 	connect(unknown, SIGNAL(clicked()), this, SLOT(button_unknown_clicked()));
-	connect(newcalcu, SIGNAL(cliced()), this, SLOT(button_newcalcu_clicked()));
+	connect(newcalcu, SIGNAL(clicked()), this, SLOT(button_newcalcu_clicked()));
 
 	QHBoxLayout *titleLayout = new QHBoxLayout;
 	titleLayout->addWidget(lineEditor);
 
 	QHBoxLayout *firstLayout = new QHBoxLayout;
+	firstLayout->addWidget(dele);
 	firstLayout->addWidget(newcalcu);
 	firstLayout->addWidget(unknown);
-	firstLayout->addWidget(dele);
 	firstLayout->addWidget(divide);
 
 	QHBoxLayout *secondLayout = new QHBoxLayout;
@@ -101,7 +122,9 @@ Calculator::Calculator(QWidget *parent)
 
 	setWindowTitle(tr("CALCULATOR"));
 	setFixedHeight(sizeHint().height());
-	setAutoFillBackground(true);
+	//setAutoFillBackground(true);
+	//setFixedHeight();
+	//setFixedWidth();
 }
 
 void Calculator::button_zero_clicked()
@@ -387,10 +410,12 @@ void Calculator::button_unknown_clicked()
 
 void Calculator::button_newcalcu_clicked()
 {
-	symbol = false;
 	S = "";
-	lineEditor->setText("0");
-	num1 = num2 = 0;
+	lineEditor->setText(tr("0"));
+	num1 = 0;
+	num2 = 0;
+	ans = 0;
+	symbol = true;
 	mark = 1;
 }
 
@@ -399,10 +424,9 @@ void Calculator::button_point_clicked()
 
 }
 
-void Calculator::button_dele_clicked()
-{
-
-}
+//void Calculator::button_dele_clicked()
+//{
+//}
 
 
 Calculator::~Calculator()
